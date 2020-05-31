@@ -1,3 +1,21 @@
+<?php 
+
+   require './private/includes/autoloader.inc.php';
+
+   session_start();
+
+
+   if(isset($_POST['submit'])) {
+      $username = trim($_POST['username']);
+      $password = trim($_POST['password']);
+
+      $query = new Database();
+      $query->login($username, $password);
+
+   }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +33,7 @@
          
       </div>
 
-      <form action="#" class="form">
+      <form action="/devcrud/index.php" method="POST" class="form" autocomplete="off">
          <div class="form-control">
             <input type="text" name="username" placeholder="Username or Email" required>
          </div>
