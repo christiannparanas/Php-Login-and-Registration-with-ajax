@@ -1,22 +1,78 @@
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password1 = document.getElementById('password');
-const password2 = document.getElementById('confirm_password');
 
-form.addEventListener('submit', (e) => {
-   e.preventDefault();
+// username
+$(document).ready(function() {
 
-   // call the function
-   checkInputs();
+   $('#username').keyup(function() {
+   
+      var check_username = $('#username').val();
+
+      if(check_username == ""){
+         $('#user_msg').css("visibility", "hidden");
+
+      } else {
+
+         $.ajax({
+            type: "POST",
+            url: "../ajaxcheck.php",
+            data: { "check_username": check_username },
+            success: function(msg){
+               $('#user_msg').css("visibility", "visible").html(msg); 
+                
+            }
+         });
+      }
+
+   });
 });
 
-function makeInput() {
+// email
+$(document).ready(function() {
 
-   // get input value
-   const usernameValue = username.value.trim();
-   const emailValue = email.value.trim();
-   const password1Value = password1.value.trim();
-   const password2Value = password2.value.trim();
+   $('#email').keyup(function() {
+   
+      var check_email = $('#email').val();
 
-};
+      if(check_email == ""){
+         $('#email_msg').css("visibility", "hidden");
+
+      } else {
+
+         $.ajax({
+            type: "POST",
+            url: "../ajaxcheck.php",
+            data: { "check_email": check_email },
+            success: function(msg){
+               $('#email_msg').css("visibility", "visible").html(msg); 
+                
+            }
+         });
+      }
+
+   });
+});
+
+// password1
+$(document).ready(function() {
+
+   $('#password').keyup(function() {
+   
+      var check_pw1 = $('#password').val();
+
+      if(check_pw1 == ""){
+         $('#pw1_msg').css("visibility", "hidden");
+
+      } else {
+
+         $.ajax({
+            type: "POST",
+            url: "../ajaxcheck.php",
+            data: { "check_pw1": check_pw1 },
+            success: function(msg){
+               $('#pw1_msg').css("visibility", "visible").html(msg); 
+                
+            }
+         });
+      }
+
+   });
+});

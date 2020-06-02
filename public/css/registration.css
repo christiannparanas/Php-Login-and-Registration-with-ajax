@@ -23,35 +23,40 @@ body {
 
 .container .header h2 {
    color: #39225D;
-   font-size: 100px;
+   font-size: 90px;
    font-weight: 900;
    padding: 10px;
+   margin-bottom: 20px;
 }
 
 .form-control input {
    display: block;
    outline: none;
-   border: 1px solid #e3e3e3;
-   font-size: 17px;
+   border-color: #e3e3e3;
+   border: 0;
+   border-bottom: 1px solid #e3e3e3;
+   font-size: 15px;
    border-radius: 4px;
-   padding: 15px 12px;
-   width: 95%;
+   padding: 12px 10px;
+   width: 100%;
+   margin-top: 10px;
 }
 
 .form-control {
-   margin-bottom: 5px;
+   margin-bottom: 15px;
 }
 
 .form-control small {
-   font-size: 15px;
+   font-size: 12px;
    margin: 5px 0 0 5px;
    float: left;
    color: #f96332;
+   visibility: hidden;
 }
 
 input:focus {
+   transition: all .1s ease-in-out;
    border: 1px solid #f96332;
-   transition: all .5s ease-in-out;
 }
 
 input::placeholder {
@@ -79,16 +84,38 @@ input::placeholder {
    color: #39225D;
 }
 
+.msg {
+   position: absolute;
+   text-align: center;
+   left: 35px;
+}
+
+.password2 {
+   margin-top: 20px;
+}
+
+#pw1, #pw2 {
+   margin-bottom: 10px;
+}
+
+/* validation */
+
+
+
+
+
+/* media query */
+
 @media (min-width: 481px){
 
    .container {
       text-align: center;
       padding: 10px;
-      width: 450px;
+      width: 420px;
    }
 
    .container .header h2 {
-      font-size: 109px;
+      font-size: 80px;
    }
 }
 
