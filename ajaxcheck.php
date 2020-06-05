@@ -48,7 +48,6 @@
    // password 1
    if(isset($_POST['check_pw1'])){
 
-      
       // minimum at least 8 char
       $pattern = '/^.{8,}$/';
       $pass = "";
@@ -57,8 +56,26 @@
 
          $pass = "Maximum of 8 characters for password!";
       } 
-
       echo $pass;
+   }
+
+
+   // password 2
+   if(isset($_POST['check_pw2'])){
+
+      $password1 = $_POST['pw1'];
+      $pasas = "";
+
+      if($password1 == $_POST['check_pw2']){
+
+         $pasas = "Password matched!";
+      
+      } else {
+
+         $pasas = "Password Unmathched!";
+      } 
+
+      echo $pasas;
    }
 
 ?>

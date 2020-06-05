@@ -76,3 +76,30 @@ $(document).ready(function() {
 
    });
 });
+
+// password2
+$(document).ready(function() {
+
+   $('#password2').keyup(function() {
+   
+      var pw1 = $('#password').val();
+      var check_pw2 = $('#password2').val();
+
+      if(check_pw2 == ""){
+         $('#pw2_msg').css("visibility", "hidden");
+
+      } else {
+
+         $.ajax({
+            type: "POST",
+            url: "../ajaxcheck.php",
+            data: { "pw1": pw1,
+                    "check_pw2": check_pw2 },
+            success: function(msg){
+               $('#pw2_msg').css("visibility", "visible").html(msg); 
+            }
+         });
+      }
+   });
+});
+

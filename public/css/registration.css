@@ -95,17 +95,10 @@ input::placeholder {
 }
 
 #pw1, #pw2 {
-   margin-bottom: 10px;
+   margin-bottom: 15px;
 }
 
-/* validation */
-
-
-
-
-
-/* media query */
-
+/* media query */  
 @media (min-width: 481px){
 
    .container {
@@ -116,6 +109,10 @@ input::placeholder {
 
    .container .header h2 {
       font-size: 80px;
+   }
+
+   .msg {
+      position: inherit;
    }
 }
 

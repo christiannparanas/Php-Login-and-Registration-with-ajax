@@ -24,17 +24,19 @@
          if($numRows > 0) {
 
             $_SESSION['status'] = "valid";
-            echo "<script>window.location.href='/devcrud/pages/home.php'</script>";
+            echo "<script>window.location.href='./pages/home.php'</script>";
 
+         } else  {
+            $_SESSION['status'] = "invalid";
+            echo "<script>alert('Incorrect credentials')</script>";
          }
       }
 
       public function register($username, $email, $password) {
          $sql = "INSERT INTO users VALUES (null, '$username', '$email', md5('$password'))";
          $sqlValidate = $this->connection()->query($sql);
+
+         echo "<script>alert('Registered Successfully!')</script>";
+         echo "<script>window.location.href='/devcrud/index.php'</script>";
       }
-
-
-
-
    }

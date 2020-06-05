@@ -2,8 +2,6 @@
 
    require './private/includes/autoloader.inc.php';
 
-   session_start();
-
 
    if(isset($_POST['submit'])) {
       $username = trim($_POST['username']);
@@ -14,6 +12,19 @@
 
    }
 
+   if(!isset($_SESSION)) 
+   { 
+       session_start(); 
+   } 
+
+   if($_SESSION['status'] == "invalid" || empty($_SESSION['status'])){
+      $_SESSION['status'] = 'invalid';
+   } else {
+      $_SESSION['status'] = "valid";
+      echo "<script>window.location.href='./pages/home.php'</script>";
+   }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +33,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./public/css/index.css">
+   <link rel="shortcut icon" href="./public/img/64.png" type="image/x-icon">
    <title>Sign In</title>
 </head>
 <body>
@@ -54,6 +66,12 @@
          </div>
       </form>
    </div>
+
+   <script>
+      if ( window.history.replaceState ) {
+         window.history.replaceState( null, null, window.location.href );
+      }
+   </script>
 
 </body>
 </html>

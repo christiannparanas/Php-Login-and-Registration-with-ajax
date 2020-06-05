@@ -1,6 +1,27 @@
 <?php 
 
    require '../private/classes/Database.class.php';
+
+   if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
+   if(isset($_POST['submit'])) {
+      $username = trim($_POST['username']);
+      $email = trim($_POST['email']);
+      $password = trim($_POST['password']);
+
+      $query = new Database();
+      $query->register($username, $email, $password);
+   }
+
+   if($_SESSION['status'] == "invalid" || empty($_SESSION['status'])){
+      $_SESSION['status'] = 'invalid';
+   } else {
+      $_SESSION['status'] = "valid";
+      echo "<script>window.location.href='./home.php'</script>";
+   }
    
 ?>
 
@@ -12,6 +33,7 @@
    <script src="https://kit.fontawesome.com/d340964368.js" crossorigin="anonymous"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <link rel="stylesheet" href="../public/css/registration.css">
+   <link rel="shortcut icon" href="../public/img/64.png" type="image/x-icon">
    <title>Sign In</title>
 </head>
 <body>
@@ -54,6 +76,11 @@
    </div>
 
    <script type="text/javascript" src="../public/js/registration.js"></script>
+   <script>
+      if ( window.history.replaceState ) {
+         window.history.replaceState( null, null, window.location.href );
+      }
+   </script>
 
 </body>
 </html>
